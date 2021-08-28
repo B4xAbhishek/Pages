@@ -23,10 +23,6 @@ const deleteRecord = async (id,name) => {
 
 const editRecord = async (id,name,description) => {
   await axios.get(`https://backendaloginda.herokuapp.com/exercises/${id}`);
-  const idh = id;
-  const nameh = name;
-  let decriptionh = description;
-
 }
     return (
  <div className='cont'>
@@ -55,7 +51,6 @@ const editRecord = async (id,name,description) => {
     </tr>
     ).reverse()
   }
-  {/* <Editpassword _id ={idh} username= {nameh} description = {descriptionh}/> */}
 </table>
 </div>
     )

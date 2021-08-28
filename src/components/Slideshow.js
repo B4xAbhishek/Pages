@@ -27,7 +27,7 @@ setCount(Count - 1)
             {Count === 1 ? <p>First Window</p> : ""}
             {Count === 2 ? <p>Second Window</p> : ""}
             {Count === 3 ? <p> Third window</p> : ""}
-            {Count >=4 ? <p>You have reaached the End of the slide</p> : ""}
+            {Count >=4 ? <p>You have reaached the End of the slie</p> : ""}
         </div>
     )
 }
