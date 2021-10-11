@@ -2,12 +2,14 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios'
 import './Password.css'
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import Editpassword from './Editpassword';
-function Password() {
 
-    const [Products,setProducts] = useState([])
 
-    useEffect(() => {
+function Password(props) {
+
+
+const [Products,setProducts] = useState([])
+
+  useEffect(() => {
         const fetchProducts = async () => {
           const { data} = await axios.get(`https://backendaloginda.herokuapp.com/exercises`)
           setProducts(data)
@@ -16,13 +18,10 @@ function Password() {
         fetchProducts()
         }, [])
         
+        
 const deleteRecord = async (id,name) => {
     await axios.delete(`https://backendaloginda.herokuapp.com/exercises/${id}`)
     console.log(`${name} deleted successfully`)
-}
-
-const editRecord = async (id,name,description) => {
-  await axios.get(`https://backendaloginda.herokuapp.com/exercises/${id}`);
 }
     return (
  <div className='cont'>
@@ -32,7 +31,7 @@ const editRecord = async (id,name,description) => {
   <thead>
   <tr>
     <th>Username</th>
-    <th>Password</th>
+    <th>Details</th>
     <th>Fb/IS</th>
     <th>Delete?</th>
     <th>Edit Record</th>
@@ -46,8 +45,12 @@ const editRecord = async (id,name,description) => {
       <td>{product.description}</td>
       <td>{product.duration}</td>
       <td><p onClick={(e) => {deleteRecord(product._id,product.username)}}> Delete </p></td>
-      <td><p onClick={(e) => {editRecord(product._id,product.username)}}> Edit </p></td>
-      <td>{product.date}</td>
+      
+      <td>
+      <Link to={"/edit/"+product._id}>Edit</Link> |
+    </td>
+
+    <td>{product.date}</td>
     </tr>
     ).reverse()
   }

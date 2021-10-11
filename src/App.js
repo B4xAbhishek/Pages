@@ -14,7 +14,8 @@ function App() {
       <Route path="/Facebook" component={Facebook} exact/>
       <Route path="/Password" component={Password} exact/>
       <Route path="/Slideshow" component={Slideshow} exact/>
-      <Route path='/Editpassword' component={Editpassword} exact/>
+      {/* <Route path='/Editpassword' component={Editpassword} exact/> */}
+      <Route path="/edit/:id" component={Editpassword} />
     </BrowserRouter>
     </>
   );

