@@ -67,7 +67,7 @@ function Instagram(props) {
             <div className="login-box"> 
 
               <div className="header"> 
-    <h2>Update or wot</h2>
+    <h2>Update details</h2>
               </div>
 
               <div className="form-wrap"> 
