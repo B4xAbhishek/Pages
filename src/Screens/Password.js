@@ -15,6 +15,7 @@ const notify = (message) => {
 }
 function Password(props) {
 
+  const api = "https://node-kafka.vercel.app"
 const [Products,setProducts] = useState([])
 const[paginatedPosts,setpaginatedPosts] = useState([])
 const[currentPage,setcurrentPage] = useState(1)
@@ -23,7 +24,7 @@ const pagesize = 10;
 
   useEffect(() => {
         const fetchProducts = async () => {
-          const { data} = await axios.get(`https://backendaloginda.herokuapp.com/exercises`)
+          const { data} = await axios.get(`${api}/g`)
           setProducts(data)
           setpaginatedPosts(_(data).slice(0).take(pagesize).value())
           console.log(data)
@@ -95,8 +96,8 @@ const pages = _.range(1, pageCount)
     Products.map((product, i) => 
     <tr key={i}>
       <td>{(Products.indexOf(product) + 1)}</td>
-      <td>{product.username}</td>
-      <td>{product.description}</td>
+      <td>{product.name}</td>
+      <td>{product.address}</td>
       <td>{product.duration}</td>
       <td><p onClick={(e) => {deleteRecord(product._id,product.username)}} > Delete </p></td>
       <td>
@@ -113,8 +114,8 @@ const pages = _.range(1, pageCount)
     paginatedPosts.map((product, i) => 
     <tr key={i}>
       <td>{(Products.indexOf(product) + 1)}</td>
-      <td>{product.username}</td>
-      <td>{product.description}</td>
+      <td>{product.name}</td>
+      <td>{product.address}</td>
       <td>{product.duration}</td>
       <td><p onClick={(e) => {deleteRecord(product._id,product.username)}} > Delete </p></td>
       <td>

