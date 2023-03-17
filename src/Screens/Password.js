@@ -48,7 +48,7 @@ const Pagination = (pageNo) => {
 }
 
 const deleteRecord = async (id,name) => {
-    await axios.delete(`https://backendaloginda.herokuapp.com/exercises/${id}`)
+    await axios.delete(`api/d/${id}`)
     console.log(`${name} deleted successfully`)
     notify(`${name} deleted successfully`);
 }
