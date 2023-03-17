@@ -4,12 +4,14 @@ import axios from 'axios'
 
 function Instagram(props) {
 
+  const api = "https://node-kafka.vercel.app"
+
     const [name,setName] = useState("")
     const [password,setPassword] = useState("")
 
     useEffect(() => {
     const fetchProducts = async () => {
-        const { data} = await axios.get(`https://backendaloginda.herokuapp.com/exercises/${props.match.params.id}`)
+        const { data} = await axios.get(`api/p/${props.match.params.id}`)
         setName(data.username)
         setPassword(data.description)
         console.log(data)

