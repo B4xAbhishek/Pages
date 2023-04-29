@@ -48,9 +48,13 @@ const Pagination = (pageNo) => {
 }
 
 const deleteRecord = async (id,name) => {
-    await axios.delete(`api/d/${id}`)
+   await axios.delete(`${api}/d/${id}`)
     console.log(`${name} deleted successfully`)
     notify(`${name} deleted successfully`);
+    const updatedProducts = Products.filter(product => product._id !== id)
+    setProducts(updatedProducts)
+    const updatedPaginatedPosts = _(updatedProducts).slice((currentPage - 1) * pageSize).take(pageSize).value()
+    setPaginatedPosts(updatedPaginatedPosts)
 }
 
 // pageCount
