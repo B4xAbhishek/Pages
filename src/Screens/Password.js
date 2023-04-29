@@ -53,8 +53,8 @@ const deleteRecord = async (id,name) => {
     notify(`${name} deleted successfully`);
     const updatedProducts = Products.filter(product => product._id !== id)
     setProducts(updatedProducts)
-    const updatedPaginatedPosts = _(updatedProducts).slice((currentPage - 1) * pageSize).take(pageSize).value()
-    setPaginatedPosts(updatedPaginatedPosts)
+//     const updatedPaginatedPosts = _(updatedProducts).slice((currentPage - 1) * pageSize).take(pageSize).value()
+//     setPaginatedPosts(updatedPaginatedPosts)
 }
 
 // pageCount
