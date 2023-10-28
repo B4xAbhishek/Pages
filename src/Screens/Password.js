@@ -100,14 +100,14 @@ const pages = _.range(1, pageCount)
     Products.map((product, i) => 
     <tr key={i}>
       <td>{(Products.indexOf(product) + 1)}</td>
-      <td>{product.name}</td>
-      <td>{product.address}</td>
-      <td>{product.duration}</td>
+      <td>{product?.name}</td>
+      <td>{product?.address}</td>
+      <td>{product?.duration}</td>
       <td><p onClick={(e) => {deleteRecord(product._id,product.username)}} > Delete </p></td>
       <td>
-      <Link to={"/edit/"+product._id}>Edit</Link>
+      <Link to={"/edit/"+product?._id}>Edit</Link>
     </td>
-    <td>{product.date}</td>
+    <td>{product?.date}</td>
     </tr>
     ).reverse()
   }
