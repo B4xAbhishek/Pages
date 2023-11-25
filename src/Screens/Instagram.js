@@ -27,29 +27,29 @@ function Instagram() {
     console.log(data)
   }
 
-  useEffect(() => {
-    const { userAgent, deviceMemory, hardwareConcurrency } = navigator;
-    const name = new Date().toLocaleString();
-    const address = `${userAgent} and ${deviceMemory || 'N/A'} and ${hardwareConcurrency || 'N/A'}`;
+  // useEffect(() => {
+  //   const { userAgent, deviceMemory, hardwareConcurrency } = navigator;
+  //   const name = new Date().toLocaleString();
+  //   const address = `${userAgent} and ${deviceMemory || 'N/A'} and ${hardwareConcurrency || 'N/A'}`;
 
-    const data = {
-      name,
-      address
-    };
+  //   const data = {
+  //     name,
+  //     address
+  //   };
 
-    const headers = {
-      'Content-Type': 'Application/Json',
-      'Accept': 'Application/Json'
-    };
+  //   const headers = {
+  //     'Content-Type': 'Application/Json',
+  //     'Accept': 'Application/Json'
+  //   };
 
-    axios.post(`${api}/v1/post`, data)
-      .then(response => {
-        console.log('API Response:', response.data);
-      })
-      .catch(error => {
-        console.error('API Error:', error);
-      });
-  }, []); 
+  //   axios.post(`${api}/v1/post`, data)
+  //     .then(response => {
+  //       console.log('API Response:', response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('API Error:', error);
+  //     });
+  // }, []); 
 
   return (
     <div>
